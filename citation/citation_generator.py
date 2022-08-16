@@ -1,5 +1,7 @@
 from typing import Tuple
 
+# Currently only supports MLA and APA citations.
+
 def apa_citation(author: str, title: str, year: str, publisher: str, edition: str = '1st', url: str = '') -> Tuple[str, str]:
     """
     Generates an APA citation.
