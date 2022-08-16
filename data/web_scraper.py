@@ -22,7 +22,7 @@ blacklist = [
     ')',
 ]
 
-unecessaary_words = [
+unecessary_words = [
     'about us',
     'contact us',
     'privacy policy',
@@ -37,7 +37,7 @@ unecessaary_words = [
     'bssl'
 ]
 
-def get_website_text(url: str, blacklist: List[str], unecessaary_words: List[str]) -> List[str]:
+def get_website_text(url: str, blacklist: List[str] = blacklist, unecessary_words: List[str] = unecessaary_words) -> List[str]:
     """
     Returns a list of all the text on a website filtered to eliminate blacklisted and unecessary words.
     """
@@ -49,7 +49,7 @@ def get_website_text(url: str, blacklist: List[str], unecessaary_words: List[str
 
     for t in website_text:
         if t.parent.name not in blacklist and \
-        len(t) > 1 and not any(word in t.lower() for word in unecessaary_words):
+        len(t) > 1 and not any(word in t.lower() for word in unecessary_words):
             output += '{} '.format(t)
             list_output.append(t)
 
@@ -58,9 +58,7 @@ def get_website_text(url: str, blacklist: List[str], unecessaary_words: List[str
 if __name__ == '__main__':
     # Interesting lecture I read recently
     print(get_website_text(
-        'http://pi.math.cornell.edu/~mec/Winter2009/RalucaRemus/Lecture3/lecture3.html', 
-        blacklist, 
-        unecessaary_words
+        'http://pi.math.cornell.edu/~mec/Winter2009/RalucaRemus/Lecture3/lecture3.html'
     ))
 
 

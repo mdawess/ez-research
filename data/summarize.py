@@ -10,11 +10,13 @@ API_KEY = os.environ.get('COHERE_API_KEY')
 co = cohere.Cohere(API_KEY)
 
 def create_summary(
-        co: cohere, 
         prompt: str, 
         model: str,
         max_tokens: int,
         n_generations: int,
+        temperature: float = 0.7,
+        k: int = 0,
+        p: float = 0.75,
     ) -> Tuple[List[str], List[float]]:
     """
     Create a summary for a given prompt using the CO:HERE API. Full credit to the summarization
@@ -26,10 +28,10 @@ def create_summary(
         return_likelihoods = 'GENERATION',
         stop_sequences=['"'],
         max_tokens=max_tokens,
-        temperature=0.7,
+        temperature=temperature,
         num_generations=n_generations,
-        k=0,
-        p=0.75
+        k=k,
+        p=p
     )
 
     gens = []
@@ -59,4 +61,4 @@ if __name__ == '__main__':
         "Killer whales have a diverse diet, although individual populations often specialize in particular types of prey"
         In summary:"
     '''
-    create_summary(co, sample_prompt, 'small', 50, 5)
+    create_summary(sample_prompt, 'small', 50, 5)
