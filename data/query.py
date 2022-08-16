@@ -1,5 +1,4 @@
 
-from urllib import response
 import requests
 import os
 
@@ -49,4 +48,5 @@ def custom_search(query: str, start: int) -> dict:
     return search_results, search_time
 
 if __name__ == '__main__':
+    # My favourite dish to cook!
     print(custom_search('Braised Short Ribs', 1))
