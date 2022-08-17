@@ -53,14 +53,11 @@ def create_summary(
 if __name__ == "__main__":
     # Sample from https://docs.cohere.ai/text-summarization-example/
     sample_prompt = """
-        "The killer whale or orca (Orcinus orca) is a toothed whale
-        belonging to the oceanic dolphin family, of which it is the largest member"
-        In summary: "The killer whale or orca is the largest type of dolphin"
-
-        "It is recognizable by its black-and-white patterned body"
-        In summary:"Its body has a black and white pattern"
-
-        "Killer whales have a diverse diet, although individual populations often specialize in particular types of prey"
-        In summary:"
+        The killer whale or orca (Orcinus orca) is a toothed whale
+        belonging to the oceanic dolphin family, of which it is the largest member. 
+        It is recognizable by its black-and-white patterned body. 
+        Killer whales have a diverse diet, although individual populations often specialize in particular types of prey
+        
+        In summary:
     """
-    print(create_summary(sample_prompt, "small", 50, 5))
+    print(create_summary(sample_prompt, "small", 100, 5))
