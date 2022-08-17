@@ -40,13 +40,14 @@ def create_summary(
     for gen in prediction.generations:
         gens.append(gen.text)
 
-    sum_likelihood = 0
-    for t in gen.token_likelihoods:
-        sum_likelihood += t.likelihood
-    # Get sum of likelihoods
-    likelihoods.append(sum_likelihood)
+        sum_likelihood = 0
+        for t in gen.token_likelihoods:
+            sum_likelihood += t.likelihood
 
-    return gens, likelihoods
+        likelihoods.append(sum_likelihood)
+
+    best_tldr = likelihoods.index(max(likelihoods))
+    return gens[best_tldr]
 
 
 if __name__ == "__main__":
@@ -62,4 +63,4 @@ if __name__ == "__main__":
         "Killer whales have a diverse diet, although individual populations often specialize in particular types of prey"
         In summary:"
     """
-    print(create_summary(sample_prompt, "small", 50, 5)[0])
+    print(create_summary(sample_prompt, "small", 50, 5))
