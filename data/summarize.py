@@ -6,18 +6,19 @@ import cohere
 import os
 from typing import List, Tuple
 
-API_KEY = os.environ.get('COHERE_API_KEY')
-co = cohere.Cohere(API_KEY)
+API_KEY = os.environ.get("COHERE_API_KEY")
+co = cohere.Client(API_KEY)
+
 
 def create_summary(
-        prompt: str, 
-        model: str,
-        max_tokens: int,
-        n_generations: int,
-        temperature: float = 0.7,
-        k: int = 0,
-        p: float = 0.75,
-    ) -> Tuple[List[str], List[float]]:
+    prompt: str,
+    model: str,
+    max_tokens: int,
+    n_generations: int,
+    temperature: float = 0.7,
+    k: int = 0,
+    p: float = 0.75,
+) -> Tuple[List[str], List[float]]:
     """
     Create a summary for a given prompt using the CO:HERE API. Full credit to the summarization
     goes to CO:HERE.
@@ -25,13 +26,13 @@ def create_summary(
     prediction = co.generate(
         model=model,
         prompt=prompt,
-        return_likelihoods = 'GENERATION',
+        return_likelihoods="GENERATION",
         stop_sequences=['"'],
         max_tokens=max_tokens,
         temperature=temperature,
         num_generations=n_generations,
         k=k,
-        p=p
+        p=p,
     )
 
     gens = []
@@ -48,9 +49,9 @@ def create_summary(
     return gens, likelihoods
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Sample from https://docs.cohere.ai/text-summarization-example/
-    sample_prompt = '''
+    sample_prompt = """
         "The killer whale or orca (Orcinus orca) is a toothed whale
         belonging to the oceanic dolphin family, of which it is the largest member"
         In summary: "The killer whale or orca is the largest type of dolphin"
@@ -60,5 +61,5 @@ if __name__ == '__main__':
 
         "Killer whales have a diverse diet, although individual populations often specialize in particular types of prey"
         In summary:"
-    '''
-    create_summary(sample_prompt, 'small', 50, 5)
+    """
+    print(create_summary(sample_prompt, "small", 50, 5)[0])
