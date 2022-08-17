@@ -36,7 +36,9 @@ def main(query: str, model_params: Dict[str, Any], page: int, batch: int = 5) ->
 
     # Added batching to lessen the # of iterations for
     # large queries
+
     i = 0
+    # Done like this to make it easy to remove later
     for result in search_results:
         if i < batch:
             (search_results[result]["web_text"]) = get_website_text(
