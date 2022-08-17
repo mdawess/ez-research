@@ -1,7 +1,9 @@
 from typing import Any, Dict, Tuple
+from ..citation.citation_generator import apa_citation
 from query import custom_search
 from web_scraper import get_website_text
 from summarize import create_summary
+from citation import *
 
 test_model_params = {
     "model": "small",
@@ -24,7 +26,7 @@ production_model_params = {
 }
 
 
-def main(query: str, model_params: Dict[str, Any], page: int, batch: int = 5) -> Tuple[Dict[str, Any], str]:
+def main(query: str, model_params: Dict[str, Any], page: int, mode: str = 'standard', batch: int = 5) -> Tuple[Dict[str, Any], str]:
     """
     Main function to run the entire pipeline.
     """
@@ -57,7 +59,28 @@ def main(query: str, model_params: Dict[str, Any], page: int, batch: int = 5) ->
                 model_params["k"],
                 model_params["p"],
             )
-            search_results[result]['web_text'] = ''
+            if mode == 'standard':
+                search_results[result]['web_text'] = ''
+            elif mode == 'research-apa':
+                search_results[result]['web_text'] = ''
+                search_results[result]['citation'] = apa_citation(
+                    search_results[result]['author'],
+                    result,
+                    search_results[result]['date'],
+                    '',
+                    '',
+                    search_results[result]['url']
+                )
+            elif mode == 'research-mla':
+                search_results[result]['web_text'] = ''
+                search_results[result]['citation'] = apa_citation(
+                    search_results[result]['author'],
+                    result,
+                    search_results[result]['date'],
+                    '',
+                    '',
+                    search_results[result]['url']
+                )
     
     return search_results, search_time
 
