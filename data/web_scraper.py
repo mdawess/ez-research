@@ -1,3 +1,4 @@
+import re
 from typing import List
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
@@ -37,6 +38,8 @@ unecessary_words = [
     "bssl",
     "search",
     "google analytics",
+    "code of conduct",
+    "accessibility policy",
 ]
 
 
@@ -44,7 +47,7 @@ def get_website_text(
     url: str,
     blacklist: List[str] = blacklist,
     unecessary_words: List[str] = unecessary_words,
-) -> List[str]:
+) -> str:
     """
     Returns a list of all the text on a website filtered to eliminate blacklisted and unecessary words.
     """
@@ -67,13 +70,22 @@ def get_website_text(
             output += "{} ".format(t)
             list_output.append(t)
 
-    return output
+    return format_output(output)
+
+def format_output(output: str) -> str:
+    """
+    Formats the output to remove extra spaces and newlines
+    so the ai can read the text better. Then adds a newline
+    with TLDR to incite the summary generation.
+    """
+    formatted_output = re.sub('\s+',' ', output)
+    return formatted_output + "\n\nTLDR:"
 
 
 if __name__ == "__main__":
     # Interesting lecture I read recently
     print(
         get_website_text(
-            "https://www.bloomberg.com/news/articles/2022-08-16/biden-signs-tax-climate-bill-marking-long-sought-democratic-win?srnd=politics-vp"
+            "http://pi.math.cornell.edu/~mec/Winter2009/RalucaRemus/Lecture3/lecture3.html?curius=1466"
         )
     )

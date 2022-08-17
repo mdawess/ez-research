@@ -27,7 +27,7 @@ def create_summary(
         model=model,
         prompt=prompt,
         return_likelihoods="GENERATION",
-        stop_sequences=['"'],
+        # stop_sequences=['"'],
         max_tokens=max_tokens,
         temperature=temperature,
         num_generations=n_generations,
