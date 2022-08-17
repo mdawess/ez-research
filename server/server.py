@@ -1,12 +1,19 @@
+import os
 from fastapi import FastAPI
 from data.main import main, test_model_params
-import os
+from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse
 
 api = FastAPI()
 
 @api.get("/")
 def health_check():
     return {"status": "OK"}
+
+@api.get("/search/{query}/{page}")
+def search(query: str, page: int):
+    search_results, search_time = main(query, test_model_params, page)
+    return {"search_time": search_time, "results": search_results}
     
 
 if __name__ == "__main__":

@@ -48,42 +48,42 @@ def main(query: str, model_params: Dict[str, Any], page: int, mode: str = 'stand
             )
 
     # Create the summary for each article
-    for result in search_results:
-        if "web_text" in search_results[result]:
-            search_results[result]["tldr"] = create_summary(
-                search_results[result]["web_text"],
-                model_params["model"],
-                model_params["max_tokens"],
-                model_params["n_generations"],
-                model_params["temperature"],
-                model_params["k"],
-                model_params["p"],
-            )
-            if mode == 'standard':
-                search_results[result]['web_text'] = ''
-            elif mode == 'research-apa':
-                search_results[result]['web_text'] = ''
-                search_results[result]['citation'] = apa_citation(
-                    search_results[result]['author'],
-                    result,
-                    search_results[result]['date'],
-                    '',
-                    '',
-                    search_results[result]['url']
-                )
-            elif mode == 'research-mla':
-                search_results[result]['web_text'] = ''
-                search_results[result]['citation'] = apa_citation(
-                    search_results[result]['author'],
-                    result,
-                    search_results[result]['date'],
-                    '',
-                    '',
-                    search_results[result]['url']
-                )
+    # for result in search_results:
+    #     if "web_text" in search_results[result]:
+    #         search_results[result]["tldr"] = create_summary(
+    #             search_results[result]["web_text"],
+    #             model_params["model"],
+    #             model_params["max_tokens"],
+    #             model_params["n_generations"],
+    #             model_params["temperature"],
+    #             model_params["k"],
+    #             model_params["p"],
+    #         )
+    #         if mode == 'standard':
+    #             search_results[result]['web_text'] = ''
+    #         elif mode == 'research-apa':
+    #             search_results[result]['web_text'] = ''
+    #             search_results[result]['citation'] = apa_citation(
+    #                 search_results[result]['author'],
+    #                 result,
+    #                 search_results[result]['date'],
+    #                 '',
+    #                 '',
+    #                 search_results[result]['url']
+    #             )
+    #         elif mode == 'research-mla':
+    #             search_results[result]['web_text'] = ''
+    #             search_results[result]['citation'] = apa_citation(
+    #                 search_results[result]['author'],
+    #                 result,
+    #                 search_results[result]['date'],
+    #                 '',
+    #                 '',
+    #                 search_results[result]['url']
+    #             )
     
     return search_results, search_time
 
 
 if __name__ == "__main__":
-    print(main("Braised Short Ribs", test_model_params, 1)['Braised Short Ribs Recipe - Tastes Better From Scratch'])
+    print(main("Braised Short Ribs", test_model_params, 1))
