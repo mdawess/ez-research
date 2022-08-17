@@ -28,8 +28,6 @@ def main(query: str, model_params: Dict[str, Any], page: int) -> Any:
             search_results[result]["url"]
         )
 
-    print(len(search_results))
-
 
 if __name__ == "__main__":
     main("Braised Short Ribs", main_model_params, 1)
