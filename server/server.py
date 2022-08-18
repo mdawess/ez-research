@@ -27,4 +27,3 @@ if __name__ == "__main__":
         reload=True,
         port=(int(os.environ.get("PORT", 8080)) or 5000),
     )
-    # print(main("Braised Short Ribs", test_model_params, 1))
