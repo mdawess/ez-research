@@ -1,3 +1,5 @@
+export type Theme = 'light' | 'dark';
+
 export type Searchbar = {
     query: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
