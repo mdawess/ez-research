@@ -1,5 +1,5 @@
 from typing import Any, Dict, Tuple
-from ..citation.citation_generator import apa_citation
+from citation.citation_generator import apa_citation, mla_citation
 from query import custom_search
 from web_scraper import get_website_text
 from summarize import create_summary
@@ -26,7 +26,13 @@ production_model_params = {
 }
 
 
-def main(query: str, model_params: Dict[str, Any], page: int, mode: str = 'standard', batch: int = 5) -> Tuple[Dict[str, Any], str]:
+def main(
+    query: str,
+    model_params: Dict[str, Any],
+    page: int,
+    mode: str = "standard",
+    batch: int = 5,
+) -> Tuple[Dict[str, Any], str]:
     """
     Main function to run the entire pipeline.
     """
@@ -73,7 +79,7 @@ def main(query: str, model_params: Dict[str, Any], page: int, mode: str = 'stand
     #             )
     #         elif mode == 'research-mla':
     #             search_results[result]['web_text'] = ''
-    #             search_results[result]['citation'] = apa_citation(
+    #             search_results[result]['citation'] = mla_citation(
     #                 search_results[result]['author'],
     #                 result,
     #                 search_results[result]['date'],
@@ -81,7 +87,7 @@ def main(query: str, model_params: Dict[str, Any], page: int, mode: str = 'stand
     #                 '',
     #                 search_results[result]['url']
     #             )
-    
+
     return search_results, search_time
 
 
