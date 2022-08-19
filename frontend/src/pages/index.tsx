@@ -1,11 +1,12 @@
 import type { NextPage } from 'next'
-import styles from '../styles/Home.module.css'
+import ThemeButton from '../components/ThemeButton'
 
 
 const Home: NextPage = () => {
   return (
     <div>
-      
+      Is this working...?
+      <ThemeButton />
     </div>
   )
 }
