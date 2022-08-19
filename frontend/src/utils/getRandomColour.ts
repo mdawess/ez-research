@@ -10,7 +10,7 @@ const getRandomColour = () => {
         'tldr-pink': '#E26A6A',
     };
     const randomColour: any = Object.keys(colours)[Math.floor(Math.random() * Object.keys(colours).length)];
-    return colours[randomColour];
+    return randomColour;
 }
 
 export default getRandomColour;

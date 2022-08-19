@@ -7,7 +7,7 @@ export default function ModeSelector(props: ModeSelectorProps) {
     return (
       <div className='ml-2 mt'>
         <div className='w-3/4 border-grey-300 border-b-2 ml-60'>
-          <h2 className='text-gray-500 font-mono my-5'>Searches full string once you hit enter!</h2>
+          <h2 className='text-gray-500 font-mono my-5'>Searches full query once you hit enter!</h2>
           <div className='flex justify-left'>
             {
               modes.map((currMode: Mode) => {

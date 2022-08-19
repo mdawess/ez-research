@@ -16,7 +16,7 @@ export default function Header() {
     }, [query, mode])
 
     return (
-        <div>
+        <div className='sticky'>
             <div className='flex items-center'>
                 <Logo normalText='tl' colouredText='dr' colour='#8C54D0' />
                 <Divider size={14} />
