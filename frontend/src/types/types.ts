@@ -12,7 +12,8 @@ export type LogoProps = {
 
 export type Mode = "standard" | "research-apa" | "research-mla";
 
-export type ModeSelector = {
+export type ModeSelectorProps = {
+    mode: Mode;
     setMode: (mode: Mode) => void;
 }
 

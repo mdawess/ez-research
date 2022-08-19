@@ -1,23 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import Divider from '../components/Divider'
 import Logo from '../components/Logo'
+import ModeSelector from '../components/ModeSelector'
 import Searchbar from '../components/Searchbar'
 import ThemeButton from '../components/ThemeButton'
+import { Mode } from '../types/types'
 
 export default function Header() {
     const [query, setQuery] = useState('')
+    const [mode, setMode] = useState('standard')
 
     useEffect(() => {
         // Update to a fucntion to send query to server
         console.log(query)
-    }, [query])
+    }, [query, mode])
 
     return (
-        <div className='flex items-center'>
-            <Logo normalText='tl' colouredText='dr' colour='#8C54D0' />
-            <Divider size={14} />
-            <Searchbar setQuery={setQuery} />
-            <ThemeButton />
+        <div>
+            <div className='flex items-center'>
+                <Logo normalText='tl' colouredText='dr' colour='#8C54D0' />
+                <Divider size={14} />
+                <Searchbar setQuery={setQuery} />
+                <ThemeButton />
+            </div>
+            
+            <ModeSelector mode={mode as Mode} setMode={setMode} />
         </div>
   )
 }
