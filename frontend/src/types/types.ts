@@ -1,12 +1,10 @@
 export type Theme = 'light' | 'dark';
 
-export type Searchbar = {
-    query: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+export type SearchbarProps = {
+    setQuery: (query: string) => void;
 }
 
-export type Logo = {
+export type LogoProps = {
     normalText: string;
     colouredText: string;
     colour: string;
@@ -14,7 +12,8 @@ export type Logo = {
 
 export type Mode = "standard" | "research-apa" | "research-mla";
 
-export type ModeSelector = {
+export type ModeSelectorProps = {
+    mode: Mode;
     setMode: (mode: Mode) => void;
 }
 
@@ -42,4 +41,8 @@ export type Profile = {
     signupDate: string;
     colour: string;
     profilePicture?: string;
+}
+
+export type DividerProps = {
+    size: number;
 }
