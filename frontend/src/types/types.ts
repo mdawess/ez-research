@@ -6,7 +6,7 @@ export type Searchbar = {
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-export type Logo = {
+export type LogoProps = {
     normalText: string;
     colouredText: string;
     colour: string;
