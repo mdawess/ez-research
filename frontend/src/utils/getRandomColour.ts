@@ -9,7 +9,7 @@ const getRandomColour = () => {
         'tldr-grey': '#515C5D',
         'tldr-pink': '#E26A6A',
     };
-    const randomColour: any = Object.keys(colours)[Math.floor(Math.random() * Object.keys(colours).length)];
+    const randomColour: any = Object.keys(colours)[Math.floor(Math.random() * Object.keys(colours).length - 1)];
     return randomColour;
 }
 
