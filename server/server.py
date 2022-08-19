@@ -12,7 +12,7 @@ def health_check():
     return {"status": "OK"}
 
 
-@api.get("/search/{mode}/{query}/{page}")
+@api.post("/search/{mode}/{query}/{page}")
 def search(query: str, page: int, mode: str):
     search_results, search_time = main(query, test_model_params, page, mode)
     return {"search_time": search_time, "results": search_results}
