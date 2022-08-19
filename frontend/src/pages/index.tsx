@@ -5,7 +5,7 @@ import Header from '../sections/Header'
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div className='p-20'>
       <Header />
     </div>
   )

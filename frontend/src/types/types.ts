@@ -1,9 +1,7 @@
 export type Theme = 'light' | 'dark';
 
-export type Searchbar = {
-    query: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+export type SearchbarProps = {
+    setQuery: (query: string) => void;
 }
 
 export type LogoProps = {
@@ -42,4 +40,8 @@ export type Profile = {
     signupDate: string;
     colour: string;
     profilePicture?: string;
+}
+
+export type DividerProps = {
+    size: number;
 }

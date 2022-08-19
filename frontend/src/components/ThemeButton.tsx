@@ -5,18 +5,18 @@ import { Sun, Moon } from 'react-bootstrap-icons';
 export default function ThemeButton() {
     const { theme, setTheme } = useTheme()
     return (
-        <div className='rounded-xl'>
+        <div className='flex mx-5 w-14 h-14 items-center justify-center'>
             {theme === 'dark' ? 
-                <button className="text-white bg-gray-800"
+                <button className=""
                     onClick={() => setTheme('light')}
                 >
-                    <Moon size={28} />
+                    <Moon size={36} />
                 </button>  
                 :
                 <button className="bg-white"
                     onClick={() => setTheme('dark')}
                 >
-                    <Sun size={28} />
+                    <Sun size={36} />
                 </button>
             }
         </div>
