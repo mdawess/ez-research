@@ -4,6 +4,14 @@ export type SearchbarProps = {
     setQuery: (query: string) => void;
 }
 
+export type MainProps = {
+    query: string;
+}
+
+export type HeaderProps = {
+    setQueryData: (data: TLDR) => void;
+}
+
 export type LogoProps = {
     normalText: string;
     colouredText: string;

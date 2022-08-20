@@ -9,7 +9,7 @@ export default function Sidebar() {
 
 
     return (
-        <div className='w-40'>
+        <div className='w-40 sticky'>
             <h4 className='font-mono text-xl pr-10'>Subjects</h4>
             <div className='mt-5'></div>
             {subjects.map((subject: any, index: number) => {

@@ -4,15 +4,17 @@ import Logo from '../components/Logo'
 import ModeSelector from '../components/ModeSelector'
 import Searchbar from '../components/Searchbar'
 import ThemeButton from '../components/ThemeButton'
-import { Mode } from '../types/types'
+import { HeaderProps, Mode } from '../types/types'
 
-export default function Header() {
+export default function Header(props: HeaderProps) {
+    const { setQueryData } = props
     const [query, setQuery] = useState('')
     const [mode, setMode] = useState('standard')
 
     useEffect(() => {
         // Update to a fucntion to send query to server
         console.log(query)
+        // setQueryData({ query })
     }, [query, mode])
 
     return (
@@ -23,8 +25,9 @@ export default function Header() {
                 <Searchbar setQuery={setQuery} />
                 <ThemeButton />
             </div>
-            
-            <ModeSelector mode={mode as Mode} setMode={setMode} />
+            <div className='ml-5'>
+                <ModeSelector mode={mode as Mode} setMode={setMode} />
+            </div>
         </div>
   )
 }
