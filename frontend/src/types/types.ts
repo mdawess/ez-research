@@ -6,12 +6,13 @@ export type SearchbarProps = {
 
 export type MainProps = {
     query: string;
+    queryData: TLDRProps[];
 }
 
 export type HeaderProps = {
     mode: Mode;
     setMode: (mode: Mode) => void;
-    setQueryData: (data: TLDRProps) => void;
+    setQueryData: (data: TLDRProps[]) => void;
 }
 
 export type LogoProps = {

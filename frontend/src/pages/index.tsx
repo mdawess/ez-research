@@ -7,13 +7,14 @@ import { Mode, TLDRProps } from '../types/types'
 
 
 const Home: NextPage = () => {
-  const [queryData, setQueryData] = useState({} as TLDRProps)
+  // May need to convert the data to a list of objects on request
+  const [queryData, setQueryData] = useState([] as TLDRProps[])
   const [mode, setMode] = useState("standard")
 
   return (
     <div className='p-20'>
       <Header setQueryData={setQueryData} mode={mode as Mode} setMode={setMode} />
-      <Hero query='Python'/>
+      <Hero query='Python' queryData={queryData} />
     </div>
   )
 }
