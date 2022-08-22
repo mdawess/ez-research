@@ -7,9 +7,9 @@ import ThemeButton from '../components/ThemeButton'
 import { HeaderProps, Mode } from '../types/types'
 
 export default function Header(props: HeaderProps) {
-    const { setQueryData } = props
+    const { setQueryData, mode, setMode } = props
     const [query, setQuery] = useState('')
-    const [mode, setMode] = useState('standard')
+    // const [mode, setMode] = useState('standard')
 
     useEffect(() => {
         // Update to a fucntion to send query to server
@@ -23,7 +23,7 @@ export default function Header(props: HeaderProps) {
                 <Logo normalText='tl' colouredText='dr' colour='#8C54D0' />
                 <Divider size={14} />
                 <Searchbar setQuery={setQuery} />
-                <ThemeButton />
+                {/* <ThemeButton /> */}
             </div>
             <div className='ml-5'>
                 <ModeSelector mode={mode as Mode} setMode={setMode} />

@@ -9,7 +9,9 @@ export type MainProps = {
 }
 
 export type HeaderProps = {
-    setQueryData: (data: TLDR) => void;
+    mode: Mode;
+    setMode: (mode: Mode) => void;
+    setQueryData: (data: TLDRProps) => void;
 }
 
 export type LogoProps = {
@@ -25,13 +27,14 @@ export type ModeSelectorProps = {
     setMode: (mode: Mode) => void;
 }
 
-export type TLDR = {
+export type TLDRProps = {
     title: string;
     author: string;
     date: string;
     tldr: string;
     url: string;
     saved: boolean;
+    mode: Mode;
     publication?: string;
     edition?: string;
 }
@@ -39,7 +42,7 @@ export type TLDR = {
 export type Subject = {
     subjectId: string;
     subjectName: string;
-    tldr: TLDR;
+    tldr: TLDRProps;
 }
 
 export type Profile = {
