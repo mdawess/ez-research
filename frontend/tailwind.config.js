@@ -19,4 +19,7 @@ module.exports = {
     },
   },
   plugins: [],
+  safelist: [{
+    pattern: /(bg|text|border)-tldr-(purple|pink|orange|blue|green|red|grey)/
+  }],
 }
