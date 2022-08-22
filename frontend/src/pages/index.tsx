@@ -14,7 +14,7 @@ const Home: NextPage = () => {
   return (
     <div className='p-20'>
       <Header setQueryData={setQueryData} mode={mode as Mode} setMode={setMode} />
-      <Hero query='Python' queryData={queryData} />
+      <Hero query='Python' queryData={queryData} mode={mode as Mode} />
     </div>
   )
 }

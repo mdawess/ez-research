@@ -7,6 +7,7 @@ export type SearchbarProps = {
 export type MainProps = {
     query: string;
     queryData: TLDRProps[];
+    mode: Mode;
 }
 
 export type HeaderProps = {

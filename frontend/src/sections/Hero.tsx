@@ -5,7 +5,7 @@ import TLDR from '../components/TLDR'
 import { MainProps } from '../types/types'
 
 export default function Hero(props: MainProps) {
-  const { query } = props
+  const { query, queryData, mode } = props
   return (
     <div className='flex'>
       <div className='flex mt-10 h-full align-top justify-start sticky'>
@@ -26,7 +26,7 @@ export default function Hero(props: MainProps) {
             tldr={dummyText}
             url='https://jmulholland.com/small-group/?curius=1294'
             saved={false}
-            mode={'standard'}
+            mode={mode}
             publication='MIT Press'
             edition='2nd Edition'
           />
@@ -37,7 +37,7 @@ export default function Hero(props: MainProps) {
             tldr={dummyText}
             url='https://jmulholland.com/small-group/?curius=1294'
             saved={false}
-            mode={'standard'}
+            mode={mode}
             publication='MIT Press'
             edition='2nd Edition'
           />

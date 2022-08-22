@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React, { useState, useMemo } from 'react'
 import { TLDRProps } from '../types/types'
+import { apaCitation, mlaCitation } from '../utils/citationGenerator';
 
 export default function TLDR(props: TLDRProps) {
   const {
@@ -40,9 +41,9 @@ export default function TLDR(props: TLDRProps) {
     <div className='border-tldr-grey w-full flex flex-col border-2 mt-10 p-6 font-mono'>
       <h1 className='text-xl font-bold'>{title}</h1>
       <div className='flex'>
-        <p className='text-tldr-grey'>{author} • {date}</p>
+        <p className='text-tldr-grey mt-1'>{author} • {date}</p>
       </div>
-      <p className='text-lg mb-5'>
+      <p className='text-lg mb-4 mt-2'>
         {tldr}
       </p>
       <Link href={link} >
@@ -50,6 +51,17 @@ export default function TLDR(props: TLDRProps) {
           {'link: ' + link}
         </a>
       </Link>
+      <div className='flex justify-between mt-4'>
+      {
+        mode === 'research-apa' && publication ?
+          apaCitation(author, title, date, publication, edition, url) 
+          :
+          mode === 'research-mla' && publication ?
+            mlaCitation(author, title, date, publication, edition, url)
+          : 
+          null
+      }
+      </div>
     </div>
   )
 }
