@@ -1,7 +1,7 @@
 import React from 'react'
 import getRandomColour from '../utils/getRandomColour';
 
-const colours = ['tldr-purple','tldr-blue','tldr-green','tldr-red','tldr-orange','tldr-grey','tldr-pink']
+const colours = ['tldr-blue','tldr-green','tldr-red','tldr-grey', 'tldr-orange','tldr-pink', 'tldr-purple']
 
 export default function Sidebar() {
     const subjects = ["sustainability", "ai", "finance", "blockchain"];
