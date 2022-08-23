@@ -2,7 +2,7 @@
 FROM python:3.10
 
 # switch working directory
-WORKDIR /tldr
+# WORKDIR /tldr
 
 # copy the requirements file into the image
 COPY requirements.txt requirements.txt
