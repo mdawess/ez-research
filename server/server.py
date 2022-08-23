@@ -12,8 +12,8 @@ def health_check():
     return {"status": "OK"}
 
 
-@api.post("/search/{mode}/{query}/{page}")
-def search(query: str, page: int, mode: str):
+@api.post("/search/{query}/{page}")
+def search(query: str, page: int):
     # search_results, search_time = main(query, test_model_params, page, mode)
     search_time = 0.006
 
