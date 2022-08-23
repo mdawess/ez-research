@@ -1,5 +1,4 @@
 from typing import Any, Dict, Tuple
-from citation.citation_generator import apa_citation, mla_citation
 from query import custom_search
 from web_scraper import get_website_text
 from summarize import create_summary
@@ -30,7 +29,6 @@ def main(
     query: str,
     model_params: Dict[str, Any],
     page: int,
-    mode: str = "standard",
     batch: int = 5,
 ) -> Tuple[Dict[str, Any], str]:
     """
@@ -54,39 +52,18 @@ def main(
             )
 
     # Create the summary for each article
-    # for result in search_results:
-    #     if "web_text" in search_results[result]:
-    #         search_results[result]["tldr"] = create_summary(
-    #             search_results[result]["web_text"],
-    #             model_params["model"],
-    #             model_params["max_tokens"],
-    #             model_params["n_generations"],
-    #             model_params["temperature"],
-    #             model_params["k"],
-    #             model_params["p"],
-    #         )
-    #         if mode == 'standard':
-    #             search_results[result]['web_text'] = ''
-    #         elif mode == 'research-apa':
-    #             search_results[result]['web_text'] = ''
-    #             search_results[result]['citation'] = apa_citation(
-    #                 search_results[result]['author'],
-    #                 result,
-    #                 search_results[result]['date'],
-    #                 '',
-    #                 '',
-    #                 search_results[result]['url']
-    #             )
-    #         elif mode == 'research-mla':
-    #             search_results[result]['web_text'] = ''
-    #             search_results[result]['citation'] = mla_citation(
-    #                 search_results[result]['author'],
-    #                 result,
-    #                 search_results[result]['date'],
-    #                 '',
-    #                 '',
-    #                 search_results[result]['url']
-    #             )
+    for result in search_results:
+        if "web_text" in search_results[result]:
+            search_results[result]["tldr"] = create_summary(
+                search_results[result]["web_text"],
+                model_params["model"],
+                model_params["max_tokens"],
+                model_params["n_generations"],
+                model_params["temperature"],
+                model_params["k"],
+                model_params["p"],
+            )
+            search_results[result]["web_text"] = ""
 
     return search_results, search_time
 

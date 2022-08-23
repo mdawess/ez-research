@@ -1,6 +1,7 @@
 export type Theme = 'light' | 'dark';
 
 export type SearchbarProps = {
+    query: string;
     setQuery: (query: string) => void;
 }
 

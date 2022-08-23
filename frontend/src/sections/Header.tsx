@@ -10,19 +10,31 @@ export default function Header(props: HeaderProps) {
     const { setQueryData, mode, setMode } = props
     const [query, setQuery] = useState('')
     // const [mode, setMode] = useState('standard')
+    const searchQuery = () => {
+        const keyDownHandler = (event: any) => {
+          if (event.code === 'Enter') {
+            event.preventDefault();
+            console.log('You pressed enter!');
+          }
+        };
+        document.addEventListener('keydown', keyDownHandler);
+      
+        return () => {
+          document.removeEventListener('keydown', keyDownHandler);
+        };
+    }
+      
 
     useEffect(() => {
-        // Update to a fucntion to send query to server
-        console.log(query)
-        // setQueryData({ query })
-    }, [query, mode])
+        searchQuery()
+    }, [])
 
     return (
         <div className='sticky'>
             <div className='flex items-center'>
                 <Logo normalText='tl' colouredText='dr' colour='#8C54D0' />
                 <Divider size={14} />
-                <Searchbar setQuery={setQuery} />
+                <Searchbar  query={query} setQuery={setQuery} />
                 {/* <ThemeButton /> */}
             </div>
             <div className='ml-5'>
@@ -31,3 +43,4 @@ export default function Header(props: HeaderProps) {
         </div>
   )
 }
+

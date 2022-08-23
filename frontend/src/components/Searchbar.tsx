@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { SearchbarProps } from '../types/types'
 
 export default function Searchbar(props: SearchbarProps) {
-    const { setQuery } = props
+    const { query, setQuery } = props
 
 
     return (
@@ -10,7 +10,7 @@ export default function Searchbar(props: SearchbarProps) {
         <input 
           type='text' 
           placeholder='Search' 
-          onChange={(e) => setQuery(e.target.value)} 
+          onChange={(e: any) => setQuery(e.target.value)} 
           className='w-full h-full bg-slate-100 outline-none indent-4 font-mono text-2xl dark:caret-black text-black'
         />
       </div>
