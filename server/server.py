@@ -42,7 +42,7 @@ if __name__ == "__main__":
 
     uvicorn.run(
         "server:api",
-        host="0.0.0.0",
+        # host="0.0.0.0",
         reload=True,
         port=(int(os.environ.get("PORT", 8080)) or 5000),
     )
