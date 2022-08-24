@@ -12,9 +12,9 @@ def health_check():
     return {"status": "OK"}
 
 
-@api.post("/search/{mode}/{query}/{page}")
-def search(query: str, page: int, mode: str):
-    # search_results, search_time = main(query, test_model_params, page, mode)
+@api.post("/search/{query}/{page}")
+def search(query: str, page: int):
+    # search_results, search_time = main(query, test_model_params, page)
     search_time = 0.006
 
     # For testing so I don't waste CO:HERE credits
