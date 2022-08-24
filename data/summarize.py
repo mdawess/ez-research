@@ -6,8 +6,7 @@ import cohere
 import os
 from typing import List, Tuple
 
-API_KEY = os.environ.get("COHERE_API_KEY")
-co = cohere.Client(API_KEY)
+co = cohere.Client(os.environ.get("COHERE_API_KEY"))
 
 # Change to a config dict rather than passing in each individually
 def create_summary(
