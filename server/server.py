@@ -14,7 +14,7 @@ def health_check():
 
 @api.post("/search/{query}/{page}")
 def search(query: str, page: int):
-    # search_results, search_time = main(query, test_model_params, page)
+    # search_results, search_time = main(query, test_model_params, page, mode)
     search_time = 0.006
 
     # For testing so I don't waste CO:HERE credits
@@ -42,7 +42,7 @@ if __name__ == "__main__":
 
     uvicorn.run(
         "server:api",
-        host="0.0.0.0",
+        # host="0.0.0.0",
         reload=True,
         port=(int(os.environ.get("PORT", 8080)) or 5000),
     )
