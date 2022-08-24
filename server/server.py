@@ -1,8 +1,11 @@
 import os
+import sys
 from fastapi import FastAPI
 from data.main import main, test_model_params
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
+
+# sys.path.append(os.path.join(os.path.dirname(__file__), '/tldr/data'))
 
 api = FastAPI()
 

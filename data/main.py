@@ -1,8 +1,9 @@
 from typing import Any, Dict, Tuple
-from query import custom_search
-from web_scraper import get_website_text
-from summarize import create_summary
-from citation import *
+import os.path
+import sys
+import query as q
+import web_scraper as ws
+import summarize as s
 
 test_model_params = {
     "model": "small",
@@ -38,7 +39,7 @@ def main(
     # Get the search results
     # Returns a dictionary with the article title as a key and the time
     # it took to return the search
-    search_results, search_time = custom_search(query, page)
+    search_results, search_time = q.custom_search(query, page)
 
     # Added batching to lessen the # of iterations for
     # large queries
@@ -47,14 +48,14 @@ def main(
     # Done like this to make it easy to remove later
     for result in search_results:
         if i < batch:
-            (search_results[result]["web_text"]) = get_website_text(
+            (search_results[result]["web_text"]) = ws.get_website_text(
                 search_results[result]["url"]
             )
 
     # Create the summary for each article
     for result in search_results:
         if "web_text" in search_results[result]:
-            search_results[result]["tldr"] = create_summary(
+            search_results[result]["tldr"] = s.create_summary(
                 search_results[result]["web_text"],
                 model_params["model"],
                 model_params["max_tokens"],
