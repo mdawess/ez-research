@@ -1,6 +1,7 @@
 import os
 import sys
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from data.main import main, test_model_params
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
@@ -8,6 +9,16 @@ from fastapi.responses import JSONResponse
 # sys.path.append(os.path.join(os.path.dirname(__file__), '/tldr/data'))
 
 api = FastAPI()
+
+origins = ["*"]
+
+api.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @api.get("/")
