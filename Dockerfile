@@ -7,7 +7,7 @@ COPY requirements.txt requirements.txt
 COPY . ./
 COPY ./server ./
 COPY ./data ./
-COPY ./.env ./.env
+# COPY ./.env ./.env
 
 # install the dependencies and packages in the requirements file
 RUN pip install -r requirements.txt
