@@ -10,7 +10,12 @@ from fastapi.responses import JSONResponse
 
 api = FastAPI()
 
-origins = ["*"]
+origins = [
+    "https://tldr-production.up.railway.app/",
+    "http://localhost",
+    "http://localhost:8080",
+    "http://localhost:3000",
+]
 
 api.add_middleware(
     CORSMiddleware,
