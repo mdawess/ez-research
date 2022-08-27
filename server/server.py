@@ -48,7 +48,12 @@ def search(query: str, page: int):
             "citation": "",
         },
     }
-    return {"search_time": search_time, "results": search_results}
+    return {
+        "search_time": search_time,
+        "results": search_results,
+        "query": query,
+        "page": page,
+    }
 
 
 if __name__ == "__main__":
