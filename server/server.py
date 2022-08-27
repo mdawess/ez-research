@@ -28,7 +28,7 @@ def health_check():
 
 @api.post("/search/{query}/{page}")
 def search(query: str, page: int):
-    search_results, search_time = main(query, test_model_params, page, mode)
+    search_results, search_time = main(query, test_model_params, page)
     return {
         "search_time": search_time,
         "results": search_results,
