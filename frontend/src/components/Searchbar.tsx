@@ -4,7 +4,6 @@ import { SearchbarProps } from '../types/types'
 export default function Searchbar(props: SearchbarProps) {
     const { query, setQuery } = props
 
-
     return (
       <div className='h-14 w-3/4'>
         <input 

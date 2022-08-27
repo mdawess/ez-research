@@ -9,12 +9,17 @@ export type MainProps = {
     query: string;
     queryData: TLDRProps[];
     mode: Mode;
+    loading: boolean;
 }
 
 export type HeaderProps = {
+    query: string;
+    setQuery: (query: string) => void;
     mode: Mode;
     setMode: (mode: Mode) => void;
+    queryData: TLDRProps[];
     setQueryData: (data: TLDRProps[]) => void;
+    setLoading: (loading: boolean) => void;
 }
 
 export type LogoProps = {

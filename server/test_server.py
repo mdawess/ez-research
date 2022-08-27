@@ -4,7 +4,7 @@ from multiprocessing.spawn import import_main_path
 import requests
 
 TEST_URL = "http://127.0.0.1:8080"
-PRODUCTION_URL = "https://tldr-production.up.railway.app/"
+PRODUCTION_URL = "https://tldr-production.up.railway.app"
 
 
 def test_search():

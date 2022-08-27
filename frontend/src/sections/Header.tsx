@@ -1,33 +1,63 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef, useMemo } from 'react'
 import Divider from '../components/Divider'
 import Logo from '../components/Logo'
 import ModeSelector from '../components/ModeSelector'
 import Searchbar from '../components/Searchbar'
 import ThemeButton from '../components/ThemeButton'
 import { HeaderProps, Mode } from '../types/types'
+import { convertToArray } from '../utils/convertToArray'
+import { TLDRProps } from '../types/types'
 
 export default function Header(props: HeaderProps) {
-    const { setQueryData, mode, setMode } = props
-    const [query, setQuery] = useState('')
-    // const [mode, setMode] = useState('standard')
-    const searchQuery = () => {
+    const { 
+      query, 
+      setQuery, 
+      queryData,
+      setQueryData, 
+      mode, 
+      setMode,
+      setLoading, 
+    } = props
+
+    const [page, setPage] = useState(1)
+    const [submit, setSubmit] = useState(false)
+    
+
+    const sendSearchQuery = async (query: string, page: number) => {
+      // const url = process.env.SERVER_API_URL
+      const url = 'https://tldr-production.up.railway.app'
+      const response = await fetch(`${url}/search/${query}/${page}`, {
+        method: 'POST',
+      })
+      
+      const data = await response.json()
+      const formattedData = convertToArray(data.results)
+      setQueryData(formattedData as TLDRProps[]) 
+    }
+
+    const searchQuery = (query: string, page: number) => {
         const keyDownHandler = (event: any) => {
-          if (event.code === 'Enter') {
+          if (event.keyCode === 13) {
             event.preventDefault();
-            console.log('You pressed enter!');
+            setSubmit(!submit)
           }
         };
         document.addEventListener('keydown', keyDownHandler);
-      
+        if (submit) {
+          setLoading(true)
+          sendSearchQuery(query, page)
+        }
         return () => {
           document.removeEventListener('keydown', keyDownHandler);
+          if (queryData.length !== 0) {
+            setLoading(false)
+          }
         };
     }
       
-
     useEffect(() => {
-        searchQuery()
-    }, [])
+        searchQuery(query, page)
+    }, [submit, page])
 
     return (
         <div className='sticky'>
