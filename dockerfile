@@ -15,9 +15,9 @@ RUN pip install -r requirements.txt
 # configure the container to run in an executed manner
 ENV PYTHONPATH "${PYTHONPATH}:/Users/michaeldawes/Documents/tldr/data"
 
-ENV COHERE_API_KEY=$COHERE_API_KEY
-ENV GOOGLE_API_KEY=$GOOGLE_API_KEY
-ENV CX=$CX
+ARG COHERE_API_KEY=$COHERE_API_KEY
+ARG GOOGLE_API_KEY=$GOOGLE_API_KEY
+ARG CX=$CX
 
 ENTRYPOINT [ "python" ]
 

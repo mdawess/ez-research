@@ -3,6 +3,7 @@ services:
   backend:
     image: tldr
     environment:
+      # - PYTHONPATH "${PYTHONPATH}:/Users/michaeldawes/Documents/tldr/data"
       - COHERE_API_KEY=${COHERE_API_KEY}
       - GOOGLE_API_KEY=${GOOGLE_API_KEY}
       - CX=${CX}
