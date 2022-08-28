@@ -72,13 +72,19 @@ def get_website_text(
 
     return format_output(output)
 
+
 def format_output(output: str) -> str:
     """
     Formats the output to remove extra spaces and newlines
     so the ai can read the text better. Then adds a newline
     with TLDR to incite the summary generation.
     """
-    formatted_output = re.sub('\s+',' ', output)
+    sub_texts = round(len(output) % 1024, 0)
+    output_list = []
+    for i in range(sub_texts):
+        output_list.append(output[sub_texts * i : sub_texts * (i + 1)])
+
+    formatted_output = re.sub("\s+", " ", output)
     return formatted_output + "\n\nTLDR:"
 
 

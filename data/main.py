@@ -1,6 +1,8 @@
 from typing import Any, Dict, Tuple
 import os.path
 import sys
+
+sys.path.append("C:/Users/Michael/OneDrive/Documents/GitHub/tldr/data")
 import query as q
 import web_scraper as ws
 import summarize as s
