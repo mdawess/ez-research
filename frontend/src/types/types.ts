@@ -41,7 +41,7 @@ export type TLDRProps = {
     date: string;
     tldr: string;
     url: string;
-    saved: boolean;
+    saved?: boolean | null;
     mode: Mode;
     publication?: string;
     edition?: string;

@@ -26,8 +26,13 @@ export default function Header(props: HeaderProps) {
     const sendSearchQuery = async (query: string, page: number) => {
       // const url = process.env.SERVER_API_URL
       const url = 'https://tldr-production.up.railway.app'
+      // const url = 'http://127.0.0.1:8080'
+
       const response = await fetch(`${url}/search/${query}/${page}`, {
         method: 'POST',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        }
       })
       
       const data = await response.json()
