@@ -70,7 +70,7 @@ export default function Header(props: HeaderProps) {
                 <Logo normalText='tl' colouredText='dr' colour='#8C54D0' />
                 <Divider size={14} />
                 <Searchbar  query={query} setQuery={setQuery} />
-                {/* <ThemeButton /> */}
+                <ThemeButton />
             </div>
             <div className='ml-5'>
                 <ModeSelector mode={mode as Mode} setMode={setMode} />

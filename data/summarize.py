@@ -6,47 +6,49 @@ import cohere
 import os
 from typing import List, Tuple
 
-co = cohere.Client(os.environ.get("COHERE_API_KEY"))
+class Summarizer:
+    def __init__(self, cohere: cohere.Client):
+        self.cohere = cohere
 
-# Change to a config dict rather than passing in each individually
-def create_summary(
-    prompt: str,
-    model: str,
-    max_tokens: int,
-    n_generations: int,
-    temperature: float = 0.7,
-    k: int = 0,
-    p: float = 0.75,
-) -> Tuple[List[str], List[float]]:
-    """
-    Create a summary for a given prompt using the CO:HERE API. Full credit to the summarization
-    goes to CO:HERE.
-    """
-    prediction = co.generate(
-        model=model,
-        prompt=prompt,
-        return_likelihoods="GENERATION",
-        # stop_sequences=['"'],
-        max_tokens=max_tokens,
-        temperature=temperature,
-        num_generations=n_generations,
-        k=k,
-        p=p,
-    )
+    def create_summary(
+        self,
+        prompt: str,
+        model: str,
+        max_tokens: int,
+        n_generations: int,
+        temperature: float = 0.7,
+        k: int = 0,
+        p: float = 0.75,
+    ) -> Tuple[List[str], List[float]]:
+        """
+        Create a summary for a given prompt using the CO:HERE API. Full credit 
+        for the summarization goes to CO:HERE.
+        """
+        prediction = self.cohere.generate(
+            model=model,
+            prompt=prompt,
+            return_likelihoods="GENERATION",
+            # stop_sequences=['"'],
+            max_tokens=max_tokens,
+            temperature=temperature,
+            num_generations=n_generations,
+            k=k,
+            p=p,
+        )
 
-    gens = []
-    likelihoods = []
-    for gen in prediction.generations:
-        gens.append(gen.text)
+        gens = []
+        likelihoods = []
+        for gen in prediction.generations:
+            gens.append(gen.text)
 
-        sum_likelihood = 0
-        for t in gen.token_likelihoods:
-            sum_likelihood += t.likelihood
+            sum_likelihood = 0
+            for t in gen.token_likelihoods:
+                sum_likelihood += t.likelihood
 
-        likelihoods.append(sum_likelihood)
+            likelihoods.append(sum_likelihood)
 
-    best_tldr = likelihoods.index(max(likelihoods))
-    return gens[best_tldr]
+        best_tldr = likelihoods.index(max(likelihoods))
+        return gens[best_tldr]
 
 
 if __name__ == "__main__":
@@ -55,8 +57,11 @@ if __name__ == "__main__":
         The killer whale or orca (Orcinus orca) is a toothed whale
         belonging to the oceanic dolphin family, of which it is the largest member. 
         It is recognizable by its black-and-white patterned body. 
-        Killer whales have a diverse diet, although individual populations often specialize in particular types of prey
+        Killer whales have a diverse diet, although individual populations 
+        often specialize in particular types of prey.
         
         In summary:
     """
-    print(create_summary(sample_prompt, "small", 100, 5))
+    co = cohere.Client(os.environ.get("COHERE_API_KEY"))
+    summarizer = Summarizer(co)
+    print(summarizer.create_summary(sample_prompt, "small", 100, 5))
