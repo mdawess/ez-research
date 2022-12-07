@@ -1,0 +1,3 @@
+- [ ] What's the best way to figure out if 2 pieces of info/topics connect?
+        - See how often certain words within are mentioned with eachother?
+- [ ] set up pg database

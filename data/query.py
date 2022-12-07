@@ -2,9 +2,6 @@ import requests
 import os
 from typing import Dict, Tuple
 
-# Need to get the API key and CX from the environment variables.
-
-
 class Search:
 
     def __init__(self, api_key: str, cx: str, url: str):

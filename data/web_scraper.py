@@ -95,7 +95,7 @@ class Scraper:
 
 if __name__ == "__main__":
     # Interesting lecture I read recently
-    scraper = TLDRScraper()
+    scraper = Scraper()
     print(
         scraper.get_website_text(
             "http://pi.math.cornell.edu/~mec/Winter2009/RalucaRemus/Lecture3/lecture3.html?curius=1466"
