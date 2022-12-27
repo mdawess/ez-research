@@ -1,7 +1,9 @@
-fastapi
+flask
 google-api-python-client
 beautifulsoup4
 requests
 cohere
 redis
 uvicorn
+google-search-results
+pysycopg2

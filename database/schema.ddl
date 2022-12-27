@@ -27,14 +27,13 @@ CREATE TABLE Tldr (
     title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    weight INTEGER NOT NULL DEFAULT 0,
 );
 
 -- A connection between two pieces of knowledge
 CREATE TABLE Connections (
-    connection_id SERIAL PRIMARY KEY,
-    tldr_id INTEGER NOT NULL REFERENCES Tldr,
-    connected_tldr_id INTEGER NOT NULL REFERENCES Tldr,
+    cid SERIAL PRIMARY KEY,
+    main_id INTEGER NOT NULL REFERENCES Tldr,
+    connected_id INTEGER NOT NULL REFERENCES Tldr,
     weight INTEGER NOT NULL DEFAULT 0,
 );
 
